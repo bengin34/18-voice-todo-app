@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { signUpProvider } = useContext(AuthContext);
+  const { signUpWithGoogle, signUpWithGithub } = useContext(AuthContext);
   const handleSubmit = (e) => {
     e.preventDefault();
   };
@@ -31,13 +31,13 @@ const Login = () => {
           />
           <p className="text-right mb-4">Forgot password</p>
           <button
-            onClick={() => signUpProvider(navigate)}
+            onClick={() => signUpWithGoogle(navigate)}
             className="w-full h-12 rounded-lg bg-red-600 text-gray-200 uppercase font-semibold hover:bg-red-700 transition mb-4"
           >
             Sign with Google
           </button>
 
-          <button className="w-full h-12 rounded-lg bg-gray-800 text-gray-200 uppercase font-semibold hover:bg-gray-900 transition mb-4">
+          <button onClick={() => signUpWithGithub(navigate)} className="w-full h-12 rounded-lg bg-gray-800 text-gray-200 uppercase font-semibold hover:bg-gray-900 transition mb-4">
             Sign with Github
           </button>
         </div>

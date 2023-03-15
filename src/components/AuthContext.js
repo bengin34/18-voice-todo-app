@@ -1,5 +1,5 @@
 import { auth } from "../firebase-config";
-import { signInWithPopup, GoogleAuthProvider, signOut,onAuthStateChanged } from "firebase/auth";
+import { signInWithPopup, GoogleAuthProvider, signOut,onAuthStateChanged,GithubAuthProvider } from "firebase/auth";
 import { useState,useEffect,createContext } from "react";
 
 export const AuthContext = createContext();
@@ -11,8 +11,17 @@ const AuthContextProvider = ({children}) => {
     userObserver();
   }, []);
 
-   const signUpProvider = (navigate) => {
-    const provider = new GoogleAuthProvider();
+   const signUpProvider = (providerName,navigate) => {
+    // const provider = new GoogleAuthProvider();
+    let provider;
+    if (providerName === "google") {
+      provider = new GoogleAuthProvider();
+    } else if (providerName === "github") {
+      provider = new GithubAuthProvider();
+    } else {
+      return;
+    }
+   
   
     signInWithPopup(auth, provider)
       .then((result) => {
@@ -24,6 +33,8 @@ const AuthContextProvider = ({children}) => {
       });
   };
   
+
+
   const logOut = () => {
     signOut(auth);
   };
@@ -46,12 +57,22 @@ const AuthContextProvider = ({children}) => {
     });
   };
   
+  const signUpWithGoogle = (navigate) => {
+    signUpProvider("google", navigate);
+  };
+
+  const signUpWithGithub = (navigate) => {
+    signUpProvider("github", navigate);
+  };
+
   const values = {
     signUpProvider,
     currentUser,
     signOut,
     userObserver,
-    logOut
+    logOut,
+    signUpWithGoogle,
+    signUpWithGithub,
   }
 
 
