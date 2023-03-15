@@ -11,7 +11,6 @@ const Todo = ({ databaseRef, update, setUpdate }) => {
     setTodoList(data.docs.map((item) => ({ ...item.data(), id: item.id })));
   };
 
-  console.log(databaseRef);
   useEffect(() => {
     getData();
     setUpdate(false);
