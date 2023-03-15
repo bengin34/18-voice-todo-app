@@ -24,11 +24,11 @@ const Todo = ({ databaseRef, update, setUpdate }) => {
   };
 
   return (
-    <div className="flex justify-center h-[100vh]  bg-gray-800 items-center flex-col">
+    <div className="flex justify-center h-[92vh]  bg-gray-800 items-center flex-col">
       <h2 className="text-3xl font- text-center mt-6 text-[#ff2625] opacitiy-5">
       Say "Add ..." ( e.g. "Add study React")
       </h2>
-      <div className=" border-4 mt-5 border-pink-600 bg-gray-200  w-[50vh] h-[50vh] rounded-2xl ">
+      <div className=" border-4 mt-5 border-pink-600 bg-gray-300  w-[50vh] h-[50vh] rounded-2xl ">
         {todoList.map((todo) => {
           return (
             <div

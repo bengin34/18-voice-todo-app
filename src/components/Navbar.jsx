@@ -21,7 +21,7 @@ navigate("/login")
 }
   return (
     <>
-      <nav className="bg-gray-200 ">
+      <nav className="bg-gray-200  h-[8vh]">
         <div className="container mx-auto py-4 flex justify-between items-center">
           <h1 className="text-2xl font-bold text-gray-500">Voi Todo</h1>
           <div className="flex space-x-10">
