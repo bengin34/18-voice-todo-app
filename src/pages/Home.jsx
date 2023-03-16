@@ -6,6 +6,7 @@ import { app, database } from "../firebase-config";
 import { collection, addDoc } from "firebase/firestore";
 import { AuthContext } from "../components/AuthContext";
 import { useContext } from "react";
+import Login from "./Login";
 
 const Home = () => {
   const [update, setUpdate] = useState(false);
@@ -27,7 +28,7 @@ console.log(currentUser)
       {currentUser ? (
         <Todo databaseRef={databaseRef} update={update} setUpdate={setUpdate} />
       ) : (
-        "Please Login to see your todos"
+        <Login />
       )}
     </div>
   );
