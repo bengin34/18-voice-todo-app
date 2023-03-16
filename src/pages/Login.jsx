@@ -29,7 +29,6 @@ const Login = () => {
             className="w-full h-12 rounded-lg px-4 text-lg focus:ring-blue-600 mb-4"
             placeholder="Password"
           />
-          <p className="text-right mb-4">Forgot password</p>
           <button
             onClick={() => signUpWithGoogle(navigate)}
             className="w-full h-12 rounded-lg bg-red-600 text-gray-200 uppercase font-semibold hover:bg-red-700 transition mb-4"
