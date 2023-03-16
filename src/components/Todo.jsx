@@ -1,6 +1,6 @@
 import React from "react";
 import { FiX } from "react-icons/fi";
-import { getDocs, doc, deleteDoc } from "firebase/firestore";
+import { getDocs, doc, deleteDoc, collectionGroup } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { database } from "../firebase-config";
 
@@ -35,14 +35,20 @@ const Todo = ({ databaseRef, update, setUpdate }) => {
               key={todo.id}
               className=" flex justify-between items-center text-center mx-1  w-[100%]  mt-5"
             >
-            <div className="flex items-center" > <img
-                src={todo.user?.photoURL}
-                className="rounded-[50%] w-12 h-12 mr-3"
-              />
-              <h3 className="text-lg">{todo.user?.displayName}</h3></div>
-        
+              <div className="flex items-center">
+                {" "}
+                <img
+                  src={todo.user?.photoURL}
+                  className="rounded-[50%] w-12 h-12 mr-3"
+                />
+                <h3 className="text-lg">{todo.user?.displayName}</h3>
+              </div>
+
               <h3 className="text-xl ml-5">{todo.item}</h3>
-              <FiX className="mx-3 text-xl text-red-800 " onClick={() => deleteItems(todo.id)} />
+              <FiX
+                className="mx-3 text-xl text-red-800 "
+                onClick={() => deleteItems(todo.id)}
+              />
             </div>
           );
         })}

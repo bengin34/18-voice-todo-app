@@ -11,15 +11,17 @@ import Login from "./Login";
 const Home = () => {
   const [update, setUpdate] = useState(false);
   const { currentUser } = useContext(AuthContext);
-console.log(currentUser)
+
   const databaseRef = collection(database, "todo-list");
   useEffect(() => {
     alanBtn({
       key: process.env.REACT_APP_ALAN_KEY,
       onCommand: (commandData) => {
-        addDoc(databaseRef, { item: commandData.data, user:currentUser }).then(() => {
-          setUpdate(true);
-        });
+        addDoc(databaseRef, { item: commandData.data, user: currentUser }).then(
+          () => {
+            setUpdate(true);
+          }
+        );
       },
     });
   }, []);
