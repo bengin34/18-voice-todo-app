@@ -1,7 +1,8 @@
 ## Project title
-The Voice based todo App with ALAN AI 
+## Voi TODO
 
 ## Motivation
+This is the voice based todo App with ALAN AI 
 It is an example of how React , Firebase, Firestore Database and ALAN AI works.
 <br>
 App enables to user with voice command to create todos.
