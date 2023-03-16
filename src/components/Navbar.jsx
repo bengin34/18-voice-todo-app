@@ -25,8 +25,10 @@ navigate("/login")
         <div className="container mx-auto py-4 flex justify-between items-center">
           <h1 className="text-2xl font-bold text-gray-500">Voi Todo</h1>
           <div className="flex space-x-10">
-          {currentUser && (
-              <h5 className="mr-2 text-xl text-black capitalize">{currentUser.displayName}</h5>
+          {currentUser && ( <div className="flex justify-center items-center ">
+          <img src={currentUser.photoURL} className="w-12 h-12 mr-3 rounded-3xl" />
+          <h5 className="mr-2 text-xl  text-black capitalize">{currentUser.displayName}</h5></div>
+              
             )}
             <button onClick={currentUser ? handleLogout : handleLogin } className="flex items-center space-x-2">
               <span><BiLogIn className="text-2xl" /> </span>

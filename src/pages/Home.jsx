@@ -17,7 +17,7 @@ console.log(currentUser)
     alanBtn({
       key: process.env.REACT_APP_ALAN_KEY,
       onCommand: (commandData) => {
-        addDoc(databaseRef, { item: commandData.data }).then(() => {
+        addDoc(databaseRef, { item: commandData.data, user:currentUser }).then(() => {
           setUpdate(true);
         });
       },

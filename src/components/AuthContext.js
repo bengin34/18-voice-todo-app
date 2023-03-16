@@ -1,28 +1,32 @@
 import { auth } from "../firebase-config";
-import { signInWithPopup, GoogleAuthProvider, signOut,onAuthStateChanged,GithubAuthProvider } from "firebase/auth";
-import { useState,useEffect,createContext } from "react";
+import {
+  signInWithPopup,
+  GoogleAuthProvider,
+  signOut,
+  onAuthStateChanged,
+  GithubAuthProvider,
+} from "firebase/auth";
+import { useState, useEffect, createContext } from "react";
 
 export const AuthContext = createContext();
 
-const AuthContextProvider = ({children}) => {
-  const [currentUser, setCurrentUser] = useState( JSON.parse(sessionStorage.getItem("user")) || false)
+const AuthContextProvider = ({ children }) => {
+  const [currentUser, setCurrentUser] = useState(
+    JSON.parse(sessionStorage.getItem("user")) || false
+  );
 
   useEffect(() => {
     userObserver();
   }, []);
 
-   const signUpProvider = (providerName,navigate) => {
-    // const provider = new GoogleAuthProvider();
+  const signUpProvider = (providerName, navigate) => {
     let provider;
     if (providerName === "google") {
       provider = new GoogleAuthProvider();
     } else if (providerName === "github") {
       provider = new GithubAuthProvider();
-    } else {
-      return;
     }
-   
-  
+
     signInWithPopup(auth, provider)
       .then((result) => {
         console.log(result);
@@ -32,15 +36,13 @@ const AuthContextProvider = ({children}) => {
         console.log(error);
       });
   };
-  
-
 
   const logOut = () => {
     signOut(auth);
+    setCurrentUser(null);
   };
 
   const userObserver = () => {
-
     onAuthStateChanged(auth, (user) => {
       if (user) {
         const { email, displayName, photoURL } = user;
@@ -52,11 +54,10 @@ const AuthContextProvider = ({children}) => {
       } else {
         setCurrentUser(false);
         sessionStorage.clear();
-        // console.log("logged out");
       }
     });
   };
-  
+
   const signUpWithGoogle = (navigate) => {
     signUpProvider("google", navigate);
   };
@@ -73,10 +74,9 @@ const AuthContextProvider = ({children}) => {
     logOut,
     signUpWithGoogle,
     signUpWithGithub,
-  }
-
+  };
 
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
-}
+};
 
-export default AuthContextProvider
+export default AuthContextProvider;
