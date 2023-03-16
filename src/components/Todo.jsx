@@ -23,9 +23,13 @@ const Todo = ({ databaseRef, update, setUpdate }) => {
     });
   };
   const sliceUserName = (user) => {
-    let a = user.split(' ')
-    console.log(a);
-    return a[0] + ' ' + a[1].slice(0,1)+'.'
+    let a = user?.split(' ')
+    if(a.length === 1){
+      return a[0]
+    }
+    else{
+      return a[0] + ' ' + a[1]?.slice(0,1)+'.'
+    }
   }
   return (
     <div className="  flex justify-center h-[92vh]  bg-gray-800 items-center flex-col">
