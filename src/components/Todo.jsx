@@ -22,7 +22,7 @@ const Todo = ({ databaseRef, update, setUpdate }) => {
       getData();
     });
   };
-
+  console.log(todoList);
   return (
     <div className="  flex justify-center h-[92vh]  bg-gray-800 items-center flex-col">
       <h2 className="text-3xl font- text-center mt-6 text-[#ff2625] opacitiy-5">
