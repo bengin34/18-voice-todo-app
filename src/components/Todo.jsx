@@ -46,7 +46,7 @@ const Todo = ({ databaseRef, update, setUpdate }) => {
               <h3 className="text-lg">{sliceUserName(todo.user?.displayName)}</h3></div>
         
               <h3 className="text-xl ml-5">{todo.item}</h3>
-              <FiX className="mx-3" onClick={() => deleteItems(todo.id)} />
+              <FiX className="mx-3 text-xl text-red-800 " onClick={() => deleteItems(todo.id)} />
             </div>
           );
         })}
