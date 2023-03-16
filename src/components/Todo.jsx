@@ -24,7 +24,7 @@ const Todo = ({ databaseRef, update, setUpdate }) => {
   };
   const sliceUserName = (user) => {
     let a = user?.split(' ')
-    if(a.length === 1){
+    if(a?.length === 1){
       return a[0]
     }
     else{
