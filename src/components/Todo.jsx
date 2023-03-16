@@ -22,25 +22,29 @@ const Todo = ({ databaseRef, update, setUpdate }) => {
       getData();
     });
   };
-
+  const sliceUserName = (user) => {
+    let a = user.split(' ')
+    console.log(a);
+    return a[0] + ' ' + a[1].slice(0,1)+'.'
+  }
   return (
-    <div className="flex justify-center h-[92vh]  bg-gray-800 items-center flex-col">
+    <div className="  flex justify-center h-[92vh]  bg-gray-800 items-center flex-col">
       <h2 className="text-3xl font- text-center mt-6 text-[#ff2625] opacitiy-5">
         Say "Add ..." ( e.g. "Add study React")
       </h2>
-      <div className=" border-4 mt-5 border-red-700 bg-gray-300  w-[50vh] h-[50vh] rounded-2xl ">
+      <div className=" container mx-auto border-4 mt-5 border-red-700 bg-gray-300 p-5 rounded-2xl ">
         {todoList.map((todo) => {
           return (
             <div
               key={todo.id}
               className=" flex justify-between items-center text-center mx-1  w-[100%]  mt-5"
             >
-              <img
+            <div className="flex items-center" > <img
                 src={todo.user?.photoURL}
                 className="rounded-[50%] w-12 h-12 mr-3"
               />
-              <h3 className="text-lg">{todo.user?.displayName}</h3>
-
+              <h3 className="text-lg">{sliceUserName(todo.user?.displayName)}</h3></div>
+        
               <h3 className="text-xl ml-5">{todo.item}</h3>
               <FiX className="mx-3" onClick={() => deleteItems(todo.id)} />
             </div>
