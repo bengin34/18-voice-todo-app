@@ -22,15 +22,7 @@ const Todo = ({ databaseRef, update, setUpdate }) => {
       getData();
     });
   };
-  const sliceUserName = (user) => {
-    let a = user?.split(' ')
-    if(a?.length === 1){
-      return a[0]
-    }
-    else{
-      return a[0] + ' ' + a[1]?.slice(0,1)+'.'
-    }
-  }
+
   return (
     <div className="  flex justify-center h-[92vh]  bg-gray-800 items-center flex-col">
       <h2 className="text-3xl font- text-center mt-6 text-[#ff2625] opacitiy-5">
@@ -47,7 +39,7 @@ const Todo = ({ databaseRef, update, setUpdate }) => {
                 src={todo.user?.photoURL}
                 className="rounded-[50%] w-12 h-12 mr-3"
               />
-              <h3 className="text-lg">{sliceUserName(todo.user?.displayName)}</h3></div>
+              <h3 className="text-lg">{todo.user?.displayName}</h3></div>
         
               <h3 className="text-xl ml-5">{todo.item}</h3>
               <FiX className="mx-3 text-xl text-red-800 " onClick={() => deleteItems(todo.id)} />
